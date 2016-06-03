@@ -3,6 +3,8 @@ Demo for a Django website created with Visual Studio 2015
 
 This application explains the django framework and implements a polls application. For further information see: https://docs.djangoproject.com/en/1.9/
 
+Visit my blog at: http://devblog.azurewebsites.net/
+
 The MIT License (MIT) 
 Copyright (c) 2016 Daniel Heinze
 
