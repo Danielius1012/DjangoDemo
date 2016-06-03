@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="polls\templates\detail.html" />
     <Content Include="polls\templates\index.html" />
+    <Content Include="polls\templates\results.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
