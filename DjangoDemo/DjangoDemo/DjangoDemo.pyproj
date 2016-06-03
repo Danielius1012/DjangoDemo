@@ -67,6 +67,7 @@
     <Folder Include="polls\templates\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="polls\templates\detail.html" />
     <Content Include="polls\templates\index.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />

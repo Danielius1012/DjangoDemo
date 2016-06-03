@@ -4,7 +4,7 @@ from django.contrib import admin
 import app.views
 
 urlpatterns = [
-    url(r'^$', include('polls.urls')),
     url(r'^polls/', include('polls.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^', include('polls.urls')),
 ]
