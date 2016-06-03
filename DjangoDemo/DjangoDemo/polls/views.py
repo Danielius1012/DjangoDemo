@@ -2,24 +2,46 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.template import loader
 from django.shortcuts import get_object_or_404, render
 from django.core.urlresolvers import reverse
+from datetime import datetime
 
 from .models import Question, Choice
 
-
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    return render(        request,         'index.html',         {            'latest_question_list': latest_question_list        })def detail(request, question_id):
+    return render(
+        request, 
+        'polls/index.html', 
+        {
+            'latest_question_list': latest_question_list,
+            'title':'Polls Page',
+            'year':datetime.now().year,
+        })
+
+def questions(request):
+    question_list = Question.objects.order_by('-pub_date')
+    return render(
+        request, 
+        'polls/questions.html', 
+        {
+            'question_list': question_list,
+            'title':'All Questions',
+            'year':datetime.now().year,
+        })
+
+def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(
         request, 
-        'detail.html', 
+        'polls/detail.html', 
         {
             'question': question,
+            'title':'Details',
+            'year':datetime.now().year,
         })
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'results.html', {'question': question})
+    return render(request, 'polls/results.html', {'question': question})
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -27,8 +49,10 @@ def vote(request, question_id):
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the question voting form.
-        return render(request, 'detail.html', {
+        return render(request, 'polls/detail.html', {
             'question': question,
+            'title':'Voting',
+            'year':datetime.now().year,
             'error_message': "You didn't select a choice.",
         })
     else:

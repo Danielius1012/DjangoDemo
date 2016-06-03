@@ -1,0 +1,27 @@
+﻿{% extends "polls/layout.html" %}
+
+{% block content %}
+
+<div class="page-header">
+	<h1>Results <small>{{ question.question_text }}</small></h1>
+</div>
+
+<p class="lead">
+    <div class="row">
+
+        {% for choice in question.choice_set.all %}
+
+        <div class="col-sm-12 col-md-12">
+            <div class="caption">
+                <h3>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</h3>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+    <h3></h3>
+    <a class="btn btn-primary spacer-16-top" href="{% url 'polls:detail' question.id %}">Vote again?</a>
+</p>
+
+{% endblock %}
